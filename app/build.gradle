@@ -8,7 +8,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.app.nl.graphql.gqltest"
+        applicationId "com.app.nl.graphql.gqldemo"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1

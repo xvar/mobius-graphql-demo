@@ -1,4 +1,4 @@
-package com.app.nl.graphql.gqltest
+package com.app.nl.graphql.gqldemo
 
 import android.app.Activity
 import android.os.Bundle

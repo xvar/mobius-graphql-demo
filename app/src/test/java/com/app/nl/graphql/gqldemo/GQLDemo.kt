@@ -1,4 +1,4 @@
-package com.app.nl.graphql.gqltest
+package com.app.nl.graphql.gqldemo
 
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
