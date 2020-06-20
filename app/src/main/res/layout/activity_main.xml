@@ -10,7 +10,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="The tests are what you want!"
+        android:text="Tests are what you want!"
+        android:textSize="40sp"
+        android:gravity="center"
         android:layout_gravity="center"
         tools:ignore="HardcodedText" />
 

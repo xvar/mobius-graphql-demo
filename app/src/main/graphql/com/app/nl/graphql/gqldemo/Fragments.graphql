@@ -1,0 +1,8 @@
+fragment Character on Person {
+    name,
+    birthYear,
+    eyeColor,
+    homeworld {
+        name
+    }
+}

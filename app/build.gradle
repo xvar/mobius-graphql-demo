@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: "de.mannodermaus.android-junit5"
+apply plugin: 'com.apollographql.apollo'
 
 android {
     compileSdkVersion 29
@@ -23,6 +24,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
     packagingOptions {
         exclude "META-INF/LICENSE*"
     }
@@ -35,17 +40,28 @@ android {
     }
 }
 
+apollo {
+    service("swapi") {
+        sourceFolder.set("com/app/nl/graphql/gqldemo")
+        rootPackageName.set("com.app.nl.graphql.gqldemo")
+
+        generateKotlinModels.set(true)
+    }
+}
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation("com.squareup.okhttp3:okhttp:4.7.2")
+    implementation("com.squareup.okhttp3:okhttp:$okhttp_version")
+    implementation("com.apollographql.apollo:apollo-runtime:$apollo_version")
+    implementation("com.apollographql.apollo:apollo-rx3-support:$apollo_version")
 
-    testImplementation "org.junit.jupiter:junit-jupiter-api:5.6.2"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.6.2"
-    testImplementation "org.junit.jupiter:junit-jupiter-params:5.6.2"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_api_version"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_api_version"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:$junit_api_version"
 
-    androidTestImplementation "androidx.test:runner:1.2.0"
-    androidTestImplementation "org.junit.jupiter:junit-jupiter-api:5.6.2"
-    androidTestImplementation "de.mannodermaus.junit5:android-test-core:1.0.0"
-    androidTestRuntimeOnly "de.mannodermaus.junit5:android-test-runner:1.0.0"
+    androidTestImplementation "androidx.test:runner:$android_runner_version"
+    androidTestImplementation "org.junit.jupiter:junit-jupiter-api:$junit_api_version"
+    androidTestImplementation "de.mannodermaus.junit5:android-test-core:$junit_runner_version"
+    androidTestRuntimeOnly "de.mannodermaus.junit5:android-test-runner:$junit_runner_version"
 }

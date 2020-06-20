@@ -1,0 +1,29 @@
+query FirstTwoPeople {
+    allPeople(first:2) {
+        people {
+            name,
+            birthYear,
+            eyeColor,
+            homeworld {
+                name
+            }
+        }
+    }
+}
+
+query ConnectedPeople($num: Int!) {
+    allPeople(first:$num) {
+        people {
+            ... Character
+            filmConnection {
+                films {
+                    characterConnection {
+                        characters {
+                            ... Character
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
